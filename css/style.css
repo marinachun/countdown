@@ -1,0 +1,39 @@
+body {
+  background-position-x: center;
+  background-size: cover;
+}
+
+.countdown-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 16rem;
+}
+
+h1 {
+  background-size: 0vmax;
+  background: blanchedalmond;
+  text-align: center;
+  line-height: 2em;
+}
+
+p {
+  background-color: rgba(236, 233, 233, 0.952);
+  color: black;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.big-text {
+  margin: 1rem 2rem;
+}
+
+.countdown-el {
+  text-align: center;
+}
+
+.countdown-el span {
+  background-color: rgba(236, 233, 233, 0.952);
+  color: black;
+  font-size: 1.3rem;
+}
