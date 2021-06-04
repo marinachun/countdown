@@ -12,6 +12,7 @@ body {
 
 h1 {
   background-size: 0vmax;
+  border-radius: 10px;
   background: blanchedalmond;
   text-align: center;
   line-height: 2em;
@@ -19,6 +20,7 @@ h1 {
 
 p {
   background-color: rgba(236, 233, 233, 0.952);
+  border-radius: 10px;
   color: black;
   font-size: 3rem;
   font-weight: bold;
@@ -34,6 +36,7 @@ p {
 
 .countdown-el span {
   background-color: rgba(236, 233, 233, 0.952);
+  border-radius: 5px;
   color: black;
   font-size: 1.3rem;
 }

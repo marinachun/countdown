@@ -8,6 +8,8 @@ let heading = "Countdown to New Years:";
 
 let countdownDate = "01-01-2022";
 
+let birthday = "01-01-2022";
+
 let background = 'background/new-years.jpeg';
 
 let submitBtn = document.getElementById("submit");
@@ -63,6 +65,7 @@ function updateCountdown() {
         monthInput.style.display = "inline";
         dayInput.style.display = "inline";
         submitBtn.style.display = "inline";
+        countdownDate = birthday;
     }
 
     headingEl.innerHTML = title;
@@ -75,11 +78,12 @@ function getDate() {
     var year = new Date().getFullYear();
     var currentDate = new Date();
 
-    const birthday = new Date(month + "-" + day + "-" + year);
+    birthday = new Date(month + "-" + day + "-" + year);
     
     if (birthday < currentDate) {
         year += 1;
-        countdownDate = month + "-" + day + "-" + year;
+        birthday = month + "-" + day + "-" + year;
+        countdownDate = birthday;
     } else {
         countdownDate = birthday;
     }
