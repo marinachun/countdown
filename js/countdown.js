@@ -7,9 +7,7 @@ let headingEl = document.getElementById("heading");
 let heading = "Countdown to New Years:";
 
 let nextYear = new Date().getFullYear() + 1;
-
 let countdownDate = "01-01-" + nextYear;
-
 let birthday = "01-01-" + nextYear;
 
 let background = 'background/new-years.jpeg';
@@ -32,9 +30,9 @@ function countdown() {
     const seconds = Math.floor(secondsTo) % 60;
 
     daysEl.innerHTML = days;
-    hoursEl.innerHTML = hours;
-    minutesEl.innerHTML = minutes;
-    secondsEl.innerHTML = seconds;
+    hoursEl.innerHTML = formatTime(hours);
+    minutesEl.innerHTML = formatTime(minutes);
+    secondsEl.innerHTML = formatTime(seconds);
 }
 
 function updateCountdown() {
@@ -80,6 +78,7 @@ function getBirthday() {
     countdownDate = birthday;
 }
 
+// Check if date has already passed this year
 function getYear(date) {
     var currentDate = new Date();
     var currentYear = new Date().getFullYear();
@@ -90,6 +89,13 @@ function getYear(date) {
         celebration = new Date(date + nextYear);
         return celebration;
     }
+}
+
+function formatTime(time) {
+    if (time < 10) {
+        time = '0' + time;
+    } 
+    return time;
 }
 
 setBackground();
