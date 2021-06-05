@@ -6,9 +6,11 @@ let secondsEl = document.getElementById("seconds");
 let headingEl = document.getElementById("heading");
 let heading = "Countdown to New Years:";
 
-let countdownDate = "01-01-2022";
+let nextYear = new Date().getFullYear() + 1;
 
-let birthday = "01-01-2022";
+let countdownDate = "01-01-" + nextYear;
+
+let birthday = "01-01-" + nextYear;
 
 let background = 'background/new-years.jpeg';
 
@@ -41,22 +43,20 @@ function updateCountdown() {
     var dayInput = document.getElementById("day");
     var submitBtn = document.getElementById("submit");
 
+    monthInput.style.display = "none";
+    dayInput.style.display = "none";
+    submitBtn.style.display = "none";
+
     if (selected === "christmas") {
         background = 'background/christmas.jpeg'
-        countdownDate = '12-25-2021';
+        countdownDate = new Date(getYear('12-25-'));
         title = "Countdown to Christmas:"
-        monthInput.style.display = "none";
-        dayInput.style.display = "none";
-        submitBtn.style.display = "none";
     }
 
     if (selected === "new-years") {
         background = 'background/new-years.jpeg'
-        countdownDate = '01-01-2022';
+        countdownDate = new Date(getYear('01-01-'));
         title = "Countdown to New Years"
-        monthInput.style.display = "none";
-        dayInput.style.display = "none";
-        submitBtn.style.display = "none";
     }
 
     if (selected === "birthday") {
@@ -72,24 +72,27 @@ function updateCountdown() {
     setBackground();
 }
 
-function getDate() {
+function getBirthday() {
     var month = document.getElementById("month").value;
     var day = document.getElementById("day").value;
-    var year = new Date().getFullYear();
-    var currentDate = new Date();
 
-    birthday = new Date(month + "-" + day + "-" + year);
-    
-    if (birthday < currentDate) {
-        year += 1;
-        birthday = month + "-" + day + "-" + year;
-        countdownDate = birthday;
+    birthday = new Date(getYear(month+"-"+day+"-"));
+    countdownDate = birthday;
+}
+
+function getYear(date) {
+    var currentDate = new Date();
+    var currentYear = new Date().getFullYear();
+    var celebration = new Date(date + currentYear);
+    if (currentDate < celebration) {
+        return celebration;
     } else {
-        countdownDate = birthday;
+        celebration = new Date(date + nextYear);
+        return celebration;
     }
 }
 
 setBackground();
 setInterval(countdown,1000);
-submitBtn.onclick = getDate;
+submitBtn.onclick = getBirthday;
 document.getElementById("countdown-type").onchange = updateCountdown;
